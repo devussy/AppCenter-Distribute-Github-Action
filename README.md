@@ -1,10 +1,10 @@
-# App Center Github Action
+# App Center Distribute Github Action
 
 This action uploads artefacts (.apk or .ipa) to Visual Studio App Center.
 
 ## Inputs
 
-### `appName`
+### `app`
 
 **Required** App name followed by username e.g. `wzieba/Sample-App`
 
@@ -14,7 +14,7 @@ This action uploads artefacts (.apk or .ipa) to Visual Studio App Center.
 
 ### `group`
 
-**Required** Distribution group
+**Required** Additional Distribution group (Collaborators always default)
 
 ### `file`
 
@@ -24,6 +24,11 @@ This action uploads artefacts (.apk or .ipa) to Visual Studio App Center.
 
 Release notes visible on release page
 
+### `silent`
+
+Flag to determine whether notify testers of this release or not (true/false)
+
+**Default** true
 
 
 ## Example usage
@@ -46,11 +51,12 @@ jobs:
         java-version: 1.8
     - name: build release 
       run: ./gradlew assembleRelease
-    - name: upload artefact to App Center
-      uses: wzieba/App-Center-action@v1.0.0
+    - name: App Center Distribute
+      uses: devussy/AppCenter-Distribute-Github-Action@v1.0.5
       with:
-        appName: wzieba/Sample-App
+        app: devussy/SampleApp
         token: ${{secrets.APP_CENTER_TOKEN}}
-        group: Testers
-        file: app/build/outputs/apk/release/app-release-unsigned.apk
+        group: TargetGroup
+        file: path to apk
+        silent: false
 ```
