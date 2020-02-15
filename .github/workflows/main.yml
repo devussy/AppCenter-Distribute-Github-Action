@@ -1,4 +1,4 @@
-name: Example workflow for App Center action
+name: Example workflow for App Center Distribute action
 on: [push]
 jobs:
   run:
@@ -6,10 +6,11 @@ jobs:
     steps:
       - name: Checkout 
         uses: actions/checkout@master
-      - name: Upload artefact to AppCenter  
+      - name: Upload artifact to AppCenter  
         uses: ./
         with:
           appName: Test Name 
           token: Test Token
           group: Test Group 
           file: Test File
+          silent: true

@@ -1,31 +1,36 @@
-name: 'App Center'
-description: 'GitHub Action that uploads artefacts for Visual Studio App Center'
-author: 'Wojciech Zięba <@wzieba>'
+name: 'App Center Distribute'
+description: 'GitHub Action that uploads artifacts for Visual Studio App Center'
+author: 'Seungyong Yun <@devussy>'
 inputs: 
-  appName:
-    description: 'App name followed by username e.g. wzieba/Sample-App'
+  app:
+    description: 'App name followed by username e.g. devussy/Sample-App'
     required: true 
   token:
     description: 'Upload token - you can get one from appcenter.ms/settings'
     required: true 
   group:
-    description: 'Distribution group'
+    description: 'Additional Distribution group than Collaborators.'
     required: true
   file:
-    description: 'Artefact to upload (.apk or .ipa)'
+    description: 'Artifact to upload (.apk or .ipa)'
     required: true
   releaseNotes:
     description: 'Release notes visible on release page'
     required: false
+  silent:
+    description: 'Flag to determine whether notify testers of this release or not (true/false)'
+    required: false
+    default: true
 branding:
   color: 'red' 
-  icon: 'send'
+  icon: 'share'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.appName }}
+    - ${{ inputs.app }}
     - ${{ inputs.token }}
     - ${{ inputs.group }}
     - ${{ inputs.file }}
     - ${{ inputs.releaseNotes }}
+    - ${{ inputs.silent }}
