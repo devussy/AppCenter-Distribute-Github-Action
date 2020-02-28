@@ -9,7 +9,7 @@ inputs:
     description: 'Upload token - you can get one from appcenter.ms/settings'
     required: true 
   group:
-    description: 'Additional Distribution group than Collaborators.'
+    description: 'Distribution group'
     required: true
   file:
     description: 'Artifact to upload (.apk or .ipa)'

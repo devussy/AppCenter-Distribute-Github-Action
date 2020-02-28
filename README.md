@@ -14,7 +14,7 @@ This action uploads artefacts (.apk or .ipa) to Visual Studio App Center.
 
 ### `group`
 
-**Required** Additional Distribution group (Collaborators always default)
+**Required** Distribution group
 
 ### `file`
 
